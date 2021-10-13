@@ -1,6 +1,8 @@
 {% extends 'base.html'%}
 
 {% load humanize %} # biblioteca para carregar data naturalmente
+{% load ssfilters %}
+
 
 {% block titulo %}
 Inicio em
@@ -36,7 +38,7 @@ Inicio em
                                 |
                                 <!-- Aqui estou pegando a base de dados COMENTÁRIOS, que é 'filha' da base
                                 POSTS e contando quantas linhas estão linkada (por foreign key) à este post -->
-                                {{ post.numero_comentarios }} Comentário(s)
+                                {{ post.numero_comentarios|plural_comentarios }}
                                 |
                                 {{ post.categoria }}
                             </small>
