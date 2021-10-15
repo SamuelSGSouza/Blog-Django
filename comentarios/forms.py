@@ -13,11 +13,6 @@ class FormComentario(ModelForm):
                 'Nome precisa ter mais que 5 caracteres'
             )
 
-        if len(email) < 5:
-            self.add_error(
-                'email_comentario',
-                'Email precisa ter mais que 5 caracteres'
-            )
 
     class Meta:
         model = Comentario

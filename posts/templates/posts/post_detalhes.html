@@ -28,9 +28,9 @@
                     <div class="col-xl-8">
 
                         {% if post.imagem %}
-                        <img class="img-fluid pb-5 " src="{{ post.imagem.url }}" alt="{{ post.titulo }}">
+                            <img class="mx-auto d-block img-thumbnail" src="{{ post.imagem.url }}" alt="{{ post.titulo }}" >
                         {% endif %}
-
+                        <br/>
                         {{ post.conteudo | safe}}
                     </div>
                     <div class="col-xl"></div>
@@ -63,16 +63,23 @@
 
                         <form method="POST" action="#envia_comentario">
                             {% csrf_token %}
-                            <table class="table">
-                               {{ form }}
-                                <tr>
-                                    <td colspan="2">
-                                        {% include 'parciais/_messages.html' %}
-                                        <input id="envia_comentario" type="submit" class="btn btn-primary"
-                                            value="Enviar">
-                                    </td>
-                                </tr>
-                            </table>
+
+                            {% for hidden_fields in form.hidden_fields %}
+                               {{ form.hidden_fields }}
+                            {% endfor %}
+
+                            {% for visible_fields in form.visible_fields %}
+                            <div class="form-group">
+                                {{ visible_fields.label_tag }} <br>
+                               {{ visible_fields }}
+                                {{ visible_fields.errors }}
+                            </div>
+                            {% endfor %}
+
+                            {% include 'parciais/_messages.html' %}
+
+                            <input id="envia_comentario" type="submit" class="btn btn-primary"
+                                    value="Enviar">
                         </form>
 
 
