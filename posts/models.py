@@ -26,6 +26,7 @@ class Post(models.Model):
 
         self.resize_image(self.imagem.name, 800)
 
+
     @staticmethod
     def resize_image(image_name, new_width):
         image_path = os.path.join(settings.MEDIA_ROOT, image_name)
