@@ -73,7 +73,9 @@
                             {% for visible_fields in form.visible_fields %}
                                {{ visible_fields|as_crispy_field }}
                             {% endfor %}
-
+                            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                            <div class="g-recaptcha" data-sitekey="6LfCFtwcAAAAAKLCVpVNICeSbT8WqRKXGtLt9uco"></div>
+                            <br/>
                             {% include 'parciais/_messages.html' %}
 
                             <input id="envia_comentario" type="submit" class="btn btn-primary"
